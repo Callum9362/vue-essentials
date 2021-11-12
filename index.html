@@ -8,11 +8,17 @@
 </head>
 <body>
     <div id="shopping-list">
-        <h1>Hello Vue!</h1>
+        <h1>{{header}}</h1>
     </div>
     <script src="https://unpkg.com/vue@3"></script>
     <script>
-        Vue.createApp({})
+        Vue.createApp({
+            data(){
+                return{
+                    header: "Vue is ready"
+                }
+            }
+        })
         .mount('#shopping-list');
     </script>
 </body>
