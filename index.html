@@ -25,10 +25,11 @@
 
             <button 
                 @click="saveItem" 
-                class="btn btn-primary">
+                class="btn btn-primary"
+                v-bind:disabled="newItem.length === 0"
+            >
                 Save Item
             </button>
-
         </div>
     <br>
     <p v-if="items.length === 0">There are no items</p>
