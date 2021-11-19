@@ -12,7 +12,7 @@
         <div class="header">
             <h1>{{ header ? header: "Shopping List App" }}</h1>
             <button v-if="editing" @click="doEdit(false)" class="btn btn-cancel">Cancel</button>
-            <button v-else @click="doEdit(true)" class="btn btn-primary">Add Item</button>
+            <button v-else @click="doEdit(true)" class="btn btn-primary test">Add Item</button>
         </div>
         
         
@@ -34,7 +34,15 @@
     <br>
     <p v-if="items.length === 0">There are no items</p>
     <ul>
-        <li v-for="item in items" :key="item.id">{{ item.label }}</li>
+        <li 
+            v-for="item in items" 
+            :key="item.id" 
+            :class="[
+                item.purchased ? 'strikeout' : '',
+                item.highPriority ? 'priority' : ''
+        ]">
+            {{ item.label }}
+        </li>
     </ul>
 </div>
 <script src="https://unpkg.com/vue@3"></script>
@@ -47,9 +55,9 @@
                 newItem: '',
                 newItemHighPriority: false,
                 items: [
-                {id: 1, label:'10 party hats'},
-                {id: 2, label:'2 board games'},
-                {id: 3, label:'20 cups'},
+                {id: 1, label:'10 party hats', purchased: true, highPriority: true},
+                {id: 2, label:'2 board games', purchased: false, highPriority: false},
+                {id: 3, label:'20 cups', purchased: false, highPriority: true},
                 ]
             }
         },
